@@ -1,20 +1,48 @@
 <template>
   <div id="app" class="container">
-    <h1>{{ msg }}</h1>
+
+    <Navbar :links="navigationLink"></Navbar>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            {{currentPage}}
+          </h1>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue';
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  components: {
+    Navbar,
+  },
+  created() {
+
+  },
+  computed: {
+    currentPage() {
+      return this.$route.name.toLowerCase()
+              .split(' ')
+              .map((s) => s.chatAt(0).toUpperCase() + s.substring(1))
+              .join(' ');
+    },
+    navigationLink() {
+      return this.$router.options.routes.map(i => {
+        return {
+          title: i.name,
+          url: i.path,
+          child: i.child? i.child: []
+        }
+      });
     }
   }
 }
 </script>
-
 <style>
 
 </style>
