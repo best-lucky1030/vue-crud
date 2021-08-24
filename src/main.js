@@ -4,6 +4,7 @@ import router from "./routers";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 import VueSweetalert2 from "vue-sweetalert2";
+import store from './store';
 
 Vue.use(VueSweetalert2);
 Vue.use(Buefy);
@@ -12,6 +13,6 @@ Vue.use(Buefy);
 
 new Vue({
   router,
-  // store,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

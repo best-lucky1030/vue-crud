@@ -36,5 +36,5 @@ $ yarn serve
 ```
 Using npm
 ```sh
-$ npm run serve
+$ npm run dev
 ```

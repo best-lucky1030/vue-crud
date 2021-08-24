@@ -1,19 +1,43 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation"></nav>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a v-for="link in links" :key="link.title" class="navbar-item" @click="$router.push(link.url)">
+            {{link.title}}
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" @click="goToMySite()">
+              <strong>Made by bestlucky</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
-  name: 'Navbar',
-  props: ['links'],
-  methods: {
-
-  }
+    name:'Navbar',
+    props:['links'],
+    methods: {
+        goToMySite: () => window.open('https://github.com/best-lucky1030')
+    }
 }
-</script>
 
+</script>
 <style scoped>
 a.navbar-item {
-  text-transform: capitalize;
-}
+    text-transform:capitalize;
+    }
 </style>

@@ -8,6 +8,10 @@
           <h1 class="title">
             {{currentPage}}
           </h1>
+          <h2 class="subtitle">
+            {{currentPage}} Page
+          </h2>
+          <router-view class="view"></router-view>
         </div>
       </div>
     </section>
@@ -16,6 +20,7 @@
 
 <script>
 import Navbar from './components/Navbar.vue';
+
 export default {
   name: 'app',
   components: {
@@ -24,21 +29,21 @@ export default {
   created() {
 
   },
-  computed: {
-    currentPage() {
+  computed:{
+    currentPage(){
       return this.$route.name.toLowerCase()
-              .split(' ')
-              .map((s) => s.chatAt(0).toUpperCase() + s.substring(1))
-              .join(' ');
+                        .split(' ')
+                        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                        .join(' ');
     },
-    navigationLink() {
+    navigationLink(){
       return this.$router.options.routes.map(i => {
-        return {
-          title: i.name,
-          url: i.path,
-          child: i.child? i.child: []
-        }
-      });
+          return {
+              title:i.name,
+              url:i.path,
+              child:i.child? i.child : []
+            }
+        });
     }
   }
 }
