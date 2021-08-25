@@ -25,11 +25,11 @@
           <label class="label">{{editAddText}} Gender</label>
           <div class="control">
             <label class="radio">
-              <input type="radio" v-model="customer.gender" value="Male" name="gender" required />
+            <input type="radio" v-model="customer.gender" value="Male" name='gender' required>
               Male
             </label>
             <label class="radio">
-              <input type="radio" v-model="customer.gender" value="Female" name="gender" />
+            <input type="radio" v-model="customer.gender" value="Female" name='gender'>
               Female
             </label>
           </div>
@@ -38,7 +38,8 @@
 
       <div class="field is-grouped insert_btn">
         <div class="control">
-          <b-button type="is-success">{{editAddText}} Customer</b-button>
+          <button class="button is-link">{{editAddText}} Customer</button>
+          <!-- <b-button type="is-success">{{editAddText}} Customer</b-button> -->
         </div>
       </div>
     </form>
