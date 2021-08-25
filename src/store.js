@@ -36,7 +36,7 @@ const store = new Vuex.Store({
           })
           .indexOf(true);
         if (index != -1) {
-          commit("remove customers", index);
+          commit("remove_customer", index);
           return true;
         } else {
           return false;

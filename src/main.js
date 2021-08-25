@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./routers";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
+import 'sweetalert2/dist/sweetalert2.min.css'; 
 import VueSweetalert2 from "vue-sweetalert2";
 import store from './store';
 

@@ -72,27 +72,29 @@ export default {
       this.editId = '';
       this.showAdd = true;
     },
-    deleteCustomer(customer) {
+    deleteCustomer(customer){
       this.$swal({
-        title: "Are you sure?",
+        title: 'Are you sure?',
         text: "You won't be able to revert this!",
-        type: "warning"
-      }).then((result) => {
-        if (result.value) {
-          this.$store.dispatch('removeCustomer', customer).then((res) => {
-            if (res) this.$swal(
-              'Deleted!',
-              'Record has been deleted',
-              'Success'
-            )
-            else this.$swal(
-              'Fail!',
-              'Fail to delete record',
-              'error'
-            )
-          });
-        }
-      })
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            this.$store.dispatch('removeCustomer',customer).then((res)=>{
+              if(res) this.$swal(
+                'Deleted!',
+                'Record has been deleted.',
+                'Success'
+              )
+              else this.$swal(
+                'Fail!',
+                'Fail to delete record.',
+                'error'
+              )
+            });
+          }
+        })
     }
   }
 }
