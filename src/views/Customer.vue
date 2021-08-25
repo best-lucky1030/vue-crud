@@ -1,11 +1,12 @@
 <template>
   <div class="columns">
-    <div class="column is-three-fifth">
-      <table v-if="data.length!=0" class="table">
+    <!-- <div class="column is-three-fifth"> -->
+    <div class="column tile is-8">
+      <b-table v-if="data.length!=0" class="table">
         <thead>
           <tr>
             <th v-for="(column, index) in columns" :key="index">{{column}}</th>
-            <th>#</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -14,14 +15,14 @@
               {{row[column]}}
             </td>
             <td>
-              <p class="buttons">
-                <a class="button is-smaill is-primary" @click="editCustomer(row)">Edit</a>
-                <a class="button is-smaill is-danger" @click="deleteCustomer(row.id)">Delete</a>
-              </p>
+              <div class="buttons">
+                <b-button size="is-small" type="is-primary" expanded @click="editCustomer(row)">Edit</b-button>
+                <b-button size="is-small" type="is-danger" expanded @click="deleteCustomer(row.id)">Delete</b-button>
+              </div>
             </td>
           </tr>
         </tbody>
-      </table>
+      </b-table>
 
       <div v-else class="notification is-danger">
         Warning !<strong>No data to show</strong>
@@ -33,14 +34,20 @@
         href="#" v-show="showAdd == false" @click="addCustomer()" 
         class="button is-small is-danger" style="float: right; margin-top: -20px;"
       >X</a>
+      <CustomerInputForm :editId="editId"></CustomerInputForm>
     </div>
   </div>
 </template>
 
 <script>
 
+import CustomerInputForm from '../components/CustomerInputForm.vue';
+
 export default {
   name: 'Customer',
+  components: {
+    CustomerInputForm
+  },
   data() {
     return {
       showAdd: true,
