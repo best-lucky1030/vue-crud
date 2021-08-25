@@ -68,7 +68,7 @@ export default {
       this.editId = customer.id;
       this.showAdd = false;
     },
-    addCustomer(customer) {
+    addCustomer() {
       this.editId = '';
       this.showAdd = true;
     },

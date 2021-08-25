@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container">
-
     <Navbar :links="navigationLink"></Navbar>
     <section class="hero">
       <div class="hero-body">

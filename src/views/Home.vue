@@ -12,14 +12,14 @@
 
 <script>
 
-	export default {
-			name: 'Home',
-			computed: {
-				data_customer() {
-					return this.$store.state.customers.length;
-				}
-			}
-	}
+export default {
+    name: 'Home',
+    computed: {
+      data_customer() {
+        return this.$store.state.customers.length;
+      }
+    }
+}
 </script>
 
 <style>
