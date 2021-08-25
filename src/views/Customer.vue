@@ -22,6 +22,17 @@
           </tr>
         </tbody>
       </table>
+
+      <div v-else class="notification is-danger">
+        Warning !<strong>No data to show</strong>
+      </div>
+    </div>
+
+    <div class="column">
+      <a 
+        href="#" v-show="showAdd == false" @click="addCustomer()" 
+        class="button is-small is-danger" style="float: right; margin-top: -20px;"
+      >X</a>
     </div>
   </div>
 </template>
@@ -30,6 +41,12 @@
 
 export default {
   name: 'Customer',
+  data() {
+    return {
+      showAdd: true,
+      editId: '',
+    }
+  },
   computed: {
     data() {
       return this.$store.state.customers;
@@ -41,7 +58,12 @@ export default {
   },
   methods: {
     editCustomer(customer) {
-      console.log('edit customer');
+      this.editId = customer.id;
+      this.showAdd = false;
+    },
+    addCustomer(customer) {
+      this.editId = '';
+      this.showAdd = true;
     },
     deleteCustomer(customer) {
       this.$swal({
@@ -51,7 +73,7 @@ export default {
       }).then((result) => {
         if (result.value) {
           this.$store.dispatch('removeCustomer', customer).then((res) => {
-            if (res) $this.swal(
+            if (res) this.$swal(
               'Deleted!',
               'Record has been deleted',
               'Success'
@@ -70,5 +92,7 @@ export default {
 </script>
 
 <style>
-
+.editing {
+  background-color: #fff8db;
+}
 </style>
